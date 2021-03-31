@@ -16,6 +16,9 @@ public class FPSController : MonoBehaviour
     [Header("General")]
     private float gravityScale = -20f;
 
+    [Header("Sonidos")]
+    public AudioSource pasos;
+
     [Header("Salto")]
     public float jumpHeight = 1.9f;
 
@@ -31,6 +34,9 @@ public class FPSController : MonoBehaviour
 
     private Vector3 rotacionCamera = Vector3.zero;
     private Vector3 posin;
+
+    private bool failSafeW = false;
+    private double oldZ = 0, oldX = 0;
     void Start()
     {
         posin = transform.position;
@@ -73,6 +79,26 @@ public class FPSController : MonoBehaviour
         }
         moverInput.y += gravityScale * Time.deltaTime;
         characterController.Move(moverInput * Time.deltaTime);
+
+        //Sound
+        double z = Mathf.Abs(transform.position.z);
+        double x = Mathf.Abs(transform.position.x);
+        bool zCon = (z % 2 >= 0 && z % 2 <= 0.5 && z != oldZ);
+        bool xCon = (x % 2 >= 0 && x % 2 <= 0.5 && x != oldX);
+        oldZ = z;
+        oldX = x;
+
+        if ((zCon || xCon) && !failSafeW)
+        {
+            failSafeW = true;
+            pasos.PlayOneShot(pasos.clip);
+            StartCoroutine(FailSafe());
+        }
+        if ((!zCon || !xCon) && !failSafeW)
+        {
+            failSafeW = true;
+            StartCoroutine(FailSafe());
+        }
     }
 
     private void Rotacion()
@@ -105,4 +131,9 @@ public class FPSController : MonoBehaviour
         E_intro.SetActive(false);
         failSafe = false;
     }*/
+    IEnumerator FailSafe()
+    {
+        yield return new WaitForSeconds(0.25f);
+        failSafeW = false;
+    }
 }
