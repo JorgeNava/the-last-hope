@@ -18,6 +18,7 @@ public class FPSController : MonoBehaviour
 
     [Header("Sonidos")]
     public AudioSource pasos;
+    public AudioSource paper;
 
     [Header("Salto")]
     public float jumpHeight = 1.9f;
@@ -37,10 +38,17 @@ public class FPSController : MonoBehaviour
 
     private bool failSafeW = false;
     private double oldZ = 0, oldX = 0;
+
+    public TextMeshProUGUI T_contador;
+    public GameObject E_ganaste;
+    private int contador;
     void Start()
     {
+        E_ganaste.SetActive(false);
         posin = transform.position;
         failSafe = true;
+        contador = 0;
+        SetContador();
         //StartCoroutine(FailSafe());
     }
 
@@ -113,16 +121,29 @@ public class FPSController : MonoBehaviour
 
         playerCamera.transform.localRotation = Quaternion.Euler(-camaraAngVer, 0f, 0f);
     }
-    /*
+    private void SetContador()
+    {
+
+        T_contador.text = "Documentos recogidos: " + contador.ToString();
+    }
+
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Error"))
+        if (other.CompareTag("Papel"))
         {
-            characterController.enabled = false;
+            /*characterController.enabled = false;
             characterController.transform.position = posin;
-            characterController.enabled = true;
+            characterController.enabled = true;*/
+            paper.PlayOneShot(paper.clip);
+            other.gameObject.SetActive(false);
+            contador++;
+            SetContador();
+            if (contador == 2)
+            {
+                E_ganaste.SetActive(true);
+            }
         }
-    }*/
+    }
 
     /*IEnumerator FailSafe()
     {
