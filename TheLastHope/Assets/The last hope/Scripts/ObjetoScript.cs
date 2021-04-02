@@ -6,10 +6,10 @@ public class ObjetoScript : MonoBehaviour
 {
     //public static int contador;
     bool destruir;
-    float timer;
-    AudioSource AS;
+   // float timer;
+    //AudioSource AS;
     public AudioClip audio;
-
+    private Animator animator;
     //[Header("Textos")]
     //public TextMeshProUGUI T_contador;
     //public GameObject E_ganaste;
@@ -22,8 +22,9 @@ public class ObjetoScript : MonoBehaviour
         contador = 0;
         SetContador();
         AS = GetComponent<AudioSource>();*/
+        animator = GetComponent<Animator>();
         destruir = false;
-        timer = 0;
+        //timer = 0;
     }
    /* private void SetContador()
     {
@@ -32,6 +33,8 @@ public class ObjetoScript : MonoBehaviour
     public void Explosion()
     {
         destruir = true;
+        AudioSource.PlayClipAtPoint(audio, this.gameObject.transform.position);
+        animator.SetBool("muerto", true);
         //AS.PlayOneShot(AS.clip);
         /*contador++;
         SetContador();
@@ -47,14 +50,14 @@ public class ObjetoScript : MonoBehaviour
     {
       if(destruir)
        {
-            timer++;
-            if(timer >= 10f)
-            {
-                //if(!AS.isPlaying)
-                AudioSource.PlayClipAtPoint(audio, this.gameObject.transform.position);
-                this.gameObject.SetActive(false);
-                //Destroy(this.gameObject);
-            }
+           // timer++;
+            //if (timer >= 10f)
+            //{
+                //if(!AS.isPlaying)w
+                //this.gameObject.SetActive(false);
+                Destroy(this.gameObject,1.75f);
+              
+       //     }
        }
     }
 }

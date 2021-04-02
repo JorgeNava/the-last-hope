@@ -15,11 +15,11 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - WhatIsGround
+  - WhatIsWall
+  - WhatIsLadder
+  - WhatIsPlayer
+  - WhatIsEnemy
   - 
   - 
   - 

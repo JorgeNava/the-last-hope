@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(CapsuleCollider))]
 [RequireComponent(typeof(CharacterController))]
@@ -27,7 +28,7 @@ public class FPSController : MonoBehaviour
     public float walkspeed;
     public float runspeed;
     public float sencibilidadRotatcion = 30f;
-
+    public int vida = 5;
     private float camaraAngVer;
     
     private Vector3 moverInput = new Vector3(0f ,0f, 0f);
@@ -141,6 +142,15 @@ public class FPSController : MonoBehaviour
             if (contador == 2)
             {
                 E_ganaste.SetActive(true);
+            }
+        }
+        if(other.CompareTag("Zombie"))
+        {
+            vida -= 1;
+            if (vida == 0)
+            {
+                SceneManager.LoadScene("GameOverScene");
+
             }
         }
     }
