@@ -33,8 +33,8 @@ public class ObjetoScript : MonoBehaviour
     public void Explosion()
     {
         destruir = true;
-        AudioSource.PlayClipAtPoint(audio, this.gameObject.transform.position);
         animator.SetBool("muerto", true);
+        AudioSource.PlayClipAtPoint(audio, this.gameObject.transform.position);
         //AS.PlayOneShot(AS.clip);
         /*contador++;
         SetContador();
@@ -55,7 +55,7 @@ public class ObjetoScript : MonoBehaviour
             //{
                 //if(!AS.isPlaying)w
                 //this.gameObject.SetActive(false);
-                Destroy(this.gameObject,1.75f);
+                Destroy(this.gameObject,1.5f);
               
        //     }
        }

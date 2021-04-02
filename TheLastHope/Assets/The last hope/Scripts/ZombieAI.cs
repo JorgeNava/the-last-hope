@@ -66,7 +66,7 @@ public class ZombieAI : MonoBehaviour
     }
     private void ChasePlayer()
     {
-        agent.speed = 2f;
+        agent.speed = 2.2f;
         animator.SetBool("Aware", true);
         ResetAttack();
         agent.SetDestination(player.position);
@@ -74,8 +74,8 @@ public class ZombieAI : MonoBehaviour
     private void AttackPlayer()
     {
         agent.SetDestination(transform.position);
-
-        transform.LookAt(player);
+        Vector3 targetPlayer = new Vector3 (player.transform.position.x, transform.position.y, player.position.z);
+        transform.LookAt(targetPlayer);
 
         if(!alreadyAttacked)
         {

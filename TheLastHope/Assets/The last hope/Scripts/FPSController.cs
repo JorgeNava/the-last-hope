@@ -16,7 +16,7 @@ public class FPSController : MonoBehaviour
 
     [Header("General")]
     private float gravityScale = -20f;
-
+    public HealthBarController healthbar;
     [Header("Sonidos")]
     public AudioSource pasos;
     public AudioSource paper;
@@ -139,20 +139,19 @@ public class FPSController : MonoBehaviour
             other.gameObject.SetActive(false);
             contador++;
             SetContador();
-            if (contador == 2)
+            if (contador == 3) //cambiar el numero de papeles para determinar cuando se acaba el juego
             {
                 E_ganaste.SetActive(true);
             }
         }
-        if(other.CompareTag("Zombie"))
+        if (other.CompareTag("Zombie"))
         {
-            vida -= 1;
-            if (vida == 0)
+            if (healthbar)
             {
-                SceneManager.LoadScene("GameOverScene");
-
+                healthbar.OnTakeDamage(10);
             }
         }
+
     }
 
     /*IEnumerator FailSafe()
