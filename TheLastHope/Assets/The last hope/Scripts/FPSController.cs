@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(CapsuleCollider))]
 [RequireComponent(typeof(CharacterController))]
@@ -15,6 +16,10 @@ public class FPSController : MonoBehaviour
 
     [Header("General")]
     private float gravityScale = -20f;
+    public HealthBarController healthbar;
+    [Header("Sonidos")]
+    public AudioSource pasos;
+    public AudioSource paper;
 
     [Header("Salto")]
     public float jumpHeight = 1.9f;
@@ -23,7 +28,7 @@ public class FPSController : MonoBehaviour
     public float walkspeed;
     public float runspeed;
     public float sencibilidadRotatcion = 30f;
-
+    public int vida = 5;
     private float camaraAngVer;
     
     private Vector3 moverInput = new Vector3(0f ,0f, 0f);
@@ -31,10 +36,20 @@ public class FPSController : MonoBehaviour
 
     private Vector3 rotacionCamera = Vector3.zero;
     private Vector3 posin;
+
+    private bool failSafeW = false;
+    private double oldZ = 0, oldX = 0;
+
+    public TextMeshProUGUI T_contador;
+    public GameObject E_ganaste;
+    private int contador;
     void Start()
     {
+        E_ganaste.SetActive(false);
         posin = transform.position;
         failSafe = true;
+        contador = 0;
+        SetContador();
         //StartCoroutine(FailSafe());
     }
 
@@ -73,6 +88,26 @@ public class FPSController : MonoBehaviour
         }
         moverInput.y += gravityScale * Time.deltaTime;
         characterController.Move(moverInput * Time.deltaTime);
+
+        //Sound
+        double z = Mathf.Abs(transform.position.z);
+        double x = Mathf.Abs(transform.position.x);
+        bool zCon = (z % 2 >= 0 && z % 2 <= 0.5 && z != oldZ);
+        bool xCon = (x % 2 >= 0 && x % 2 <= 0.5 && x != oldX);
+        oldZ = z;
+        oldX = x;
+
+        if ((zCon || xCon) && !failSafeW)
+        {
+            failSafeW = true;
+            pasos.PlayOneShot(pasos.clip);
+            StartCoroutine(FailSafe());
+        }
+        if ((!zCon || !xCon) && !failSafeW)
+        {
+            failSafeW = true;
+            StartCoroutine(FailSafe());
+        }
     }
 
     private void Rotacion()
@@ -87,16 +122,37 @@ public class FPSController : MonoBehaviour
 
         playerCamera.transform.localRotation = Quaternion.Euler(-camaraAngVer, 0f, 0f);
     }
-    /*
+    private void SetContador()
+    {
+
+        T_contador.text = "Documentos recogidos: " + contador.ToString();
+    }
+
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Error"))
+        if (other.CompareTag("Papel"))
         {
-            characterController.enabled = false;
+            /*characterController.enabled = false;
             characterController.transform.position = posin;
-            characterController.enabled = true;
+            characterController.enabled = true;*/
+            paper.PlayOneShot(paper.clip);
+            other.gameObject.SetActive(false);
+            contador++;
+            SetContador();
+            if (contador == 3) //cambiar el numero de papeles para determinar cuando se acaba el juego
+            {
+                E_ganaste.SetActive(true);
+            }
         }
-    }*/
+        if (other.CompareTag("Zombie"))
+        {
+            if (healthbar)
+            {
+                healthbar.OnTakeDamage(10);
+            }
+        }
+
+    }
 
     /*IEnumerator FailSafe()
     {
@@ -105,4 +161,9 @@ public class FPSController : MonoBehaviour
         E_intro.SetActive(false);
         failSafe = false;
     }*/
+    IEnumerator FailSafe()
+    {
+        yield return new WaitForSeconds(0.25f);
+        failSafeW = false;
+    }
 }

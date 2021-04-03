@@ -14,19 +14,30 @@ public class Municion : MonoBehaviour
         //AS = GetComponent<AudioSource>();
     }
 
-    private void OnCollisionStay(Collision collision)
+    /*private void OnCollisionStay(Collision collision)
     {
         //AS.PlayOneShot(AS.clip);
         foreach (ContactPoint contacto in collision.contacts)
         {
             /*GameObject m = Instantiate(sprite, contacto.point + (contacto.normal * 0.01f), Quaternion.LookRotation(contacto.normal));
             m.transform.parent = collision.gameObject.transform;
-            Destroy(m, 5f);*/
+            Destroy(m, 5f);
         }
         if (collision.gameObject.CompareTag("Zombie"))
         {
             //AudioSource.PlayClipAtPoint(audio, collision.gameObject.transform.position);
             os = collision.gameObject.GetComponent<ObjetoScript>();
+            os.Explosion();
+        }
+        Destroy(this.gameObject);
+    }*/
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Zombie"))
+        {
+            //AudioSource.PlayClipAtPoint(audio, collision.gameObject.transform.position);
+            os = other.gameObject.GetComponent<ObjetoScript>();
             os.Explosion();
         }
         Destroy(this.gameObject);
