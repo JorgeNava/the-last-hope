@@ -235,6 +235,30 @@ MonoBehaviour:
   lightSource: {fileID: 1086285635}
   clickSound: {fileID: 1956705924}
   failSafe: 0
+--- !u!114 &7853362473435104107
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6492620610906853849}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eedf7e663d6285149b4db6492ac78cec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerCamera: {fileID: 6492620609557746093}
+  failSafe: 0
+  healthbar: {fileID: 0}
+  pasos: {fileID: 0}
+  paper: {fileID: 0}
+  jumpHeight: 1.9
+  walkspeed: 20
+  runspeed: 30
+  sencibilidadRotatcion: 30
+  vida: 5
+  T_contador: {fileID: 0}
+  E_ganaste: {fileID: 0}
 --- !u!1001 &1905397636564609766
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -463,7 +487,8 @@ PrefabInstance:
       propertyPath: sencibilidadRotatcion
       value: 75
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8705712208688484972, guid: cb27ee9e4f8b40544a826e5203b4b0b7, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: cb27ee9e4f8b40544a826e5203b4b0b7, type: 3}
 --- !u!1 &6492620610906853849 stripped
 GameObject:
@@ -480,6 +505,12 @@ Transform:
 --- !u!4 &6492620609557746090 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6951798908464701901, guid: cb27ee9e4f8b40544a826e5203b4b0b7,
+    type: 3}
+  m_PrefabInstance: {fileID: 4207395927615172711}
+  m_PrefabAsset: {fileID: 0}
+--- !u!20 &6492620609557746093 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 6951798908464701898, guid: cb27ee9e4f8b40544a826e5203b4b0b7,
     type: 3}
   m_PrefabInstance: {fileID: 4207395927615172711}
   m_PrefabAsset: {fileID: 0}
