@@ -37,6 +37,7 @@ public class FPSController : MonoBehaviour
     private Vector3 rotacionCamera = Vector3.zero;
     private Vector3 posin;
 
+    private bool failSafeGanar = false;
     private bool failSafeW = false;
     private double oldZ = 0, oldX = 0;
 
@@ -48,7 +49,8 @@ public class FPSController : MonoBehaviour
         E_ganaste.SetActive(false);
         posin = transform.position;
         failSafe = true;
-        contador = 0;
+        failSafeGanar = true;
+        contador = 10;
         SetContador();
         //StartCoroutine(FailSafe());
     }
@@ -125,7 +127,7 @@ public class FPSController : MonoBehaviour
     private void SetContador()
     {
 
-        T_contador.text = "Documentos recogidos: " + contador.ToString();
+        T_contador.text = "Documentos restantes: " + contador.ToString();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -137,11 +139,12 @@ public class FPSController : MonoBehaviour
             characterController.enabled = true;*/
             paper.PlayOneShot(paper.clip);
             other.gameObject.SetActive(false);
-            contador++;
+            contador--;
             SetContador();
-            if (contador == 3) //cambiar el numero de papeles para determinar cuando se acaba el juego
+            if (contador == 0) //cambiar el numero de papeles restantes para determinar cuando se acaba el juego
             {
-                E_ganaste.SetActive(true);
+                //E_ganaste.SetActive(true);
+                StartCoroutine(FailSafeGanar());
             }
         }
         if (other.CompareTag("Zombie"))
@@ -154,13 +157,14 @@ public class FPSController : MonoBehaviour
 
     }
 
-    /*IEnumerator FailSafe()
+    IEnumerator FailSafeGanar()
     {
-        E_intro.SetActive(true);
+        E_ganaste.SetActive(true);
         yield return new WaitForSeconds(8f);
-        E_intro.SetActive(false);
-        failSafe = false;
-    }*/
+        E_ganaste.SetActive(false);
+        SceneManager.LoadScene("MenuScene");
+        failSafeGanar = false;
+    }
     IEnumerator FailSafe()
     {
         yield return new WaitForSeconds(0.25f);
