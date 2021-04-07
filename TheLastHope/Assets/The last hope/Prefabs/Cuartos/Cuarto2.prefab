@@ -1927,6 +1927,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Alfombra Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 8351280655736971689, guid: 2bc718db5c260cf4d8fdba86e93a8fd2,
+        type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
     - target: {fileID: 8353849584341448175, guid: 2bc718db5c260cf4d8fdba86e93a8fd2,
         type: 3}
       propertyPath: m_RootOrder
