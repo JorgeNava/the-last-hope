@@ -1516,12 +1516,11 @@ MonoBehaviour:
     up spreading even faster than the original one throughout the world, causing
     most humans to transform into zombies.
 
-    
 
-    But there is one last hope,
-    your mission is to get the formulas for the ultimate cure created by the supreme
-    scientist Elon Musk. He was last seen in this hotel where he would transmit the
-    new vaccine.'
+
+    But there is one last hope, your
+    mission is to get the formulas for the ultimate cure created by the supreme scientist
+    Elon Musk. He was last seen in this hotel where he would transmit the new vaccine.'
 --- !u!222 &1098079438
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1557,7 +1556,7 @@ RectTransform:
   m_GameObject: {fileID: 1098969503}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.4, y: 0.9, z: 1}
+  m_LocalScale: {x: 0.6, y: 0.9, z: 1}
   m_Children:
   - {fileID: 952335758}
   - {fileID: 208292712}
@@ -1712,7 +1711,7 @@ RectTransform:
   m_GameObject: {fileID: 1165003673}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.4, y: 0.9, z: 1}
+  m_LocalScale: {x: 0.6, y: 0.9, z: 1}
   m_Children:
   - {fileID: 75324395}
   - {fileID: 1098079436}

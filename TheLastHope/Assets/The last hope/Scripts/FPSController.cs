@@ -127,7 +127,7 @@ public class FPSController : MonoBehaviour
     private void SetContador()
     {
 
-        T_contador.text = "Documentos restantes: " + contador.ToString();
+        T_contador.text = "Lost documents: " + contador.ToString();
     }
 
     private void OnTriggerEnter(Collider other)
