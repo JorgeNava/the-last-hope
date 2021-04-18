@@ -6,11 +6,11 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/The last hope/Scenes/GameScene.unity
-    guid: f127cacf3e76aaa488e4e89ef36c2aaf
-  - enabled: 1
     path: Assets/The last hope/Scenes/MenuScene.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
+  - enabled: 1
+    path: Assets/The last hope/Scenes/GameScene.unity
+    guid: f127cacf3e76aaa488e4e89ef36c2aaf
   - enabled: 1
     path: Assets/The last hope/Scenes/GameOverScene.unity
     guid: a87b13c92f3c60d4ba3cf77e562252a9

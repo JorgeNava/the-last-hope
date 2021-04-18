@@ -9029,6 +9029,11 @@ PrefabInstance:
       propertyPath: m_BoundingSphereOverride.y
       value: 9.4e-44
       objectReference: {fileID: 0}
+    - target: {fileID: 1426845923275423326, guid: 555ca2017a097064eb2c7a3cff7efffc,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 0b4adb331a6c55e4b83e25ce1fd4dfa3, type: 2}
     - target: {fileID: 4965930114335948827, guid: 555ca2017a097064eb2c7a3cff7efffc,
         type: 3}
       propertyPath: m_LocalRotation.w
@@ -9134,6 +9139,11 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: -0.115
       objectReference: {fileID: 0}
+    - target: {fileID: 9088757108520008516, guid: 555ca2017a097064eb2c7a3cff7efffc,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 0b4adb331a6c55e4b83e25ce1fd4dfa3, type: 2}
     - target: {fileID: 9088757108541704143, guid: 555ca2017a097064eb2c7a3cff7efffc,
         type: 3}
       propertyPath: m_BoundingSphereOverride.w
@@ -9149,6 +9159,11 @@ PrefabInstance:
       propertyPath: m_BoundingSphereOverride.y
       value: 9.4e-44
       objectReference: {fileID: 0}
+    - target: {fileID: 9088757108668962412, guid: 555ca2017a097064eb2c7a3cff7efffc,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 0b4adb331a6c55e4b83e25ce1fd4dfa3, type: 2}
     - target: {fileID: 9088757109285322120, guid: 555ca2017a097064eb2c7a3cff7efffc,
         type: 3}
       propertyPath: points.Array.data[0].x
@@ -9959,6 +9974,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1091998749}
     m_Modifications:
+    - target: {fileID: 7711867886238526280, guid: 307f4b88a281e3c4ab0657b4c7adc751,
+        type: 3}
+      propertyPath: m_text
+      value: 'You''ve collected all the documents.
+
+        Congratulations you''ve
+        saved the world!'
+      objectReference: {fileID: 0}
     - target: {fileID: 7711867886988925282, guid: 307f4b88a281e3c4ab0657b4c7adc751,
         type: 3}
       propertyPath: m_Pivot.x
